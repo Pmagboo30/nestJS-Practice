@@ -11,9 +11,15 @@ export class AppController{
     {
     const reportType = type === "income" ? ReportType.INCOME: ReportType.EXPENSE
     return data.report.filter((report) => report.type === reportType);
+    
   }
   @Get(":id") //responsible for get request
-  getReportById(){
+  getReportById(
+    @Param('type') type: string, 
+    @Param('id') id:string){
+      const reportType = type === "income" ? ReportType.INCOME: ReportType.EXPENSE
+      return data.report.filter((report) => report.type === reportType);
+    
     return [];
   }
   @Post(":id")
